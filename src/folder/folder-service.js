@@ -1,16 +1,16 @@
 const FolderService = {
   getFolders: (db) => {
-    db('folder')
+    return db('folder')
       .select('*');
   },
   getFolderByID: (db, id) => {
-    db('folder')
+    return db('folder')
       .select('*')
       .where({ id })
       .first();
   },
   addFolder: (db, data) => {
-    db('folder')
+    return db('folder')
       .insert(data)
       .returning('*')
       .then(rows => {
@@ -18,12 +18,12 @@ const FolderService = {
       });
   },
   updateFolder: (db, id, data) => {
-    db('folder')
+    return db('folder')
       .where({ id })
       .update(data);
   },
   deleteFolder: (db, id) => {
-    db('folder')
+    return db('folder')
       .where({ id })
       .delete();
   }

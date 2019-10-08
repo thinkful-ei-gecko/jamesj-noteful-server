@@ -3,8 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const knex = require('knex');
 const { NODE_ENV } = require('./config');
+
+const folderRouter = require('./folder/folder-router');
 
 const app = express();
 
@@ -32,5 +33,7 @@ app.use((error, req, res, next) => {
   }
   return res.status(500).json(response);
 });
+
+app.use('/api/folder', folderRouter);
 
 module.exports = app;
