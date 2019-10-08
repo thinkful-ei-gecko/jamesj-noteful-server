@@ -58,7 +58,30 @@ noteRouter
   })
   .get((req, res, next) => res.status(200).json(sanitizeNote(res.note)))
   .patch((req, res, next) => {
+    const db = req.app.get('db');
+    const id = req.params.note_id;
+    const { name, description, date_added, folder_id } = req.body;
+    const updateData = { name, description };
 
+    if(!name && !description && !date_added && !folder_id) {
+      return res.status(400).json({error: {message: 'Invalid data - name, description, date added or folder id is required'}});
+    }
+
+    sanitizeNote(updateData);
+    updateData.date_added = date_added;
+    updateData.folder_id = folder_id;
+
+    NoteService.updateNote(db, id, updateData)
+      .then(affected => res.status(204).end())
+      .catch(next);
+  })
+  .delete((req, res, next) => {
+    const db = req.app.get('db');
+    const id = req.params.note_id;
+
+    NoteService.deleteNote(db, id)
+      .then(affected => res.status(204).end())
+      .catch(next);
   });
 
 module.exports = noteRouter;
