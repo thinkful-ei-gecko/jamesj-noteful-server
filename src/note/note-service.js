@@ -6,7 +6,8 @@ const NoteService = {
   getNoteByID: (db, id) => {
     return db('note')
       .select('*')
-      .where({ id });
+      .where({ id })
+      .first();
   },
   addNote: (db, data) => {
     return db('note')
