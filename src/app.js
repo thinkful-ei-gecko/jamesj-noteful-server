@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 
 const folderRouter = require('./folder/folder-router');
+const noteRouter = require('./note/note-router');
 
 const app = express();
 
@@ -35,5 +36,6 @@ app.use((error, req, res, next) => {
 });
 
 app.use('/api/folder', folderRouter);
+app.use('/api/note', noteRouter);
 
 module.exports = app;

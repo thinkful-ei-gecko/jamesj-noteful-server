@@ -14,7 +14,7 @@ folderRouter
   .get((req, res, next) => {
     const db = req.app.get('db');
     FolderService.getFolders(db)
-      .then(folders => res.status(200).json(folders))
+      .then(folders => res.status(200).json(folders.map(folder => sanitizeFolder(folder))))
       .catch(error => next(error));
   })
   .post((req, res, next) => {
