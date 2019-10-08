@@ -1,5 +1,5 @@
 {
-  "name": "express-boilerplate",
+  "name": "noteful-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -23,14 +23,13 @@
     "knex": "^0.19.5",
     "morgan": "^1.9.1",
     "pg": "^7.12.1",
-    "postgrator": "^3.10.2",
+    "postgrator-cli": "^3.3.0",
     "xss": "^1.0.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.2",
-    "postgrator-cli": "^3.3.0",
     "supertest": "^4.0.2"
   }
 }
