@@ -17,7 +17,7 @@ noteRouter
   .get((req, res, next) => {
     const db = req.app.get('db');
     NoteService.getNotes(db)
-      .then(notes => res.status(200).json(notes.map(note => sanitizeNote(note))))
+      .then(notes => res.status(200).json(notes))
       .catch(next);
   })
   .post((req, res, next) => {
